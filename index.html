@@ -3,16 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toronto Solar Eclipse</title>
+  <title>Alexa Homework</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const counterElement = document.getElementById('timeCount');
+      const startValue = 120;
+      const endValue = 281;
+      const duration = 100; // in seconds
+      const incrementPerSecond = (endValue - startValue) / duration;
+      let currentValue = startValue;
+
+      const interval = setInterval(function() {
+        currentValue += incrementPerSecond;
+        if (currentValue >= endValue) {
+          currentValue = startValue;
+        }
+        
+        let displayTime = (Math.floor(currentValue / 60)).toString() + ":" + (Math.round(currentValue) % 60).toString().padStart(2, '0') + " PM";
+
+        counterElement.textContent = displayTime;
+
+        const moon = document.querySelector('.moon');
+        const sun = document.querySelector('.sun');
+        const body = document.querySelector('body');
+        const sunWidth = sun.offsetWidth;
+        const moonWidth = moon.offsetWidth;
+        const distanceToTravel = sunWidth + moonWidth;
+
+        const moonPosition = distanceToTravel + sunWidth + (sunWidth/2) - (currentValue / (endValue - startValue) * distanceToTravel);
+        moon.style.left = moonPosition + moonWidth*0.1 + 'px';
+
+        const backgroundColor = calculateBackgroundColor(currentValue, startValue, endValue);
+        document.body.style.backgroundColor = backgroundColor;
+      }, 100);
+
+      function calculateBackgroundColor(currentValue, startValue, endValue) {
+        const startColor = [173, 216, 230]; // Light blue
+        const endColor = [28, 40, 51]; // White
+        const middleValue = (startValue + endValue) / 2;
+        let ratio;
+
+        if (currentValue <= middleValue) {
+          ratio = (currentValue - startValue) / (middleValue - startValue);
+        } else {
+          ratio = (endValue - currentValue) / (endValue - middleValue);
+        }
+
+        const backgroundColor = startColor.map((start, index) => {
+          const end = endColor[index];
+          return Math.round(start + ratio * (end - start));
+        });
+
+        return `rgb(${backgroundColor.join(',')})`;
+      }
+    });
+  </script>
 </head>
 <body>
+  <div class="time"><h1 id="timeCount">2:00 PM</h1></div> <!-- Initial value is set to startValue -->
   <div class="container">
-      <img id="torontoImageNight" class="toronto-image hidden" src="night.jpg" alt="Toronto Night">
-      <img id="torontoImageDay" class="toronto-image" src="day.jpg" alt="Toronto Day">
+    <div class="sun"></div>
+    <div class="moon"></div>
   </div>
-  <input type="range" min="0" max="1440" value="0" step="1" id="timeSlider"> <!-- 1440 minutes in a day -->
-  <p id="timeLabel">Time: 12:00 AM</p>
-  <script src="script.js"></script>
 </body>
 </html>

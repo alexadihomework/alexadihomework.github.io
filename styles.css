@@ -1,30 +1,41 @@
-.container {
-    position: relative;
-    width: 800px;
-    margin: 0 auto;
-  }
-  
-  .toronto-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    transition: opacity 1s ease-in-out; /* Smooth transition */
-  }
-  
-  .hidden {
-    opacity: 0;
-    pointer-events: none; /* Hide and disable pointer events for hidden image */
-  }
-  
-  #timeSlider {
-    position: relative; /* Ensure the slider stays on top */
-    z-index: 2; /* Ensure the slider stays on top */
-    width: 100%;
-  }
-  
-  #timeLabel {
-    position: relative; /* Ensure the time label stays on top */
-    z-index: 2; /* Ensure the time label stays on to*/
-  }
+.time {
+  font-size: 20px;
+  color: white;
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; 
+}
+
+.sun {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 45vw; 
+  height: 45vw; 
+  max-width: 800px; 
+  max-height: 800px; 
+  background-color: orange;
+  box-shadow: 0 0 35px 5px yellow, 0 0 25px 10px yellow inset;
+}
+
+.moon {
+  position: absolute;
+  top: 51%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 45vw; 
+  height: 45vw; 
+  max-width: 800px; 
+  max-height: 800px;
+  background-color: black;
+}
+
+body{
+  background-color: rgba(28, 40, 51 ,100);
+  overflow-x: hidden;
+}
