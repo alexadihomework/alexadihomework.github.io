@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toronto Solar Eclipse</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+      <img id="torontoImageNight" class="toronto-image hidden" src="night.jpg" alt="Toronto Night">
+      <img id="torontoImageDay" class="toronto-image" src="day.jpg" alt="Toronto Day">
+  </div>
+  <input type="range" min="0" max="1440" value="0" step="1" id="timeSlider"> <!-- 1440 minutes in a day -->
+  <p id="timeLabel">Time: 12:00 AM</p>
+  <script src="script.js"></script>
+</body>
+</html>

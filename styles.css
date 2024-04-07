@@ -1,0 +1,30 @@
+.container {
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+  }
+  
+  .toronto-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    transition: opacity 1s ease-in-out; /* Smooth transition */
+  }
+  
+  .hidden {
+    opacity: 0;
+    pointer-events: none; /* Hide and disable pointer events for hidden image */
+  }
+  
+  #timeSlider {
+    position: relative; /* Ensure the slider stays on top */
+    z-index: 2; /* Ensure the slider stays on top */
+    width: 100%;
+  }
+  
+  #timeLabel {
+    position: relative; /* Ensure the time label stays on top */
+    z-index: 2; /* Ensure the time label stays on to*/
+  }
